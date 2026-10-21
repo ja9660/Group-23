@@ -42,21 +42,42 @@ class Application:
         self.tile2 = self.tileview.add_tile(1, 0, lv.DIR.LEFT)
 
         self.tile1_label = lv.label(self.tile1)
-        self.tile1_label.set_text("Hello Students")
+        self.tile1_label.set_text("Public Transport Information\n")
         self.tile1_label.set_style_text_font(lv.font_montserrat_28, 0)
-        self.tile1_label.center()
+        self.tile1_label.align(lv.ALIGN.CENTER, 0, -20)
         self.apply_tile_colors(self.tile1, self.tile1_label, False)
 
+        self.tile1_subtitle = lv.label(self.tile1)
+        self.tile1_subtitle.set_text("Group_23\nHesam, Joudi, Elsa, Julia, Adam, Sara\nV1.2.4")
+        self.tile1_subtitle.set_style_text_font(lv.font_montserrat_16, 0)
+        self.tile1_subtitle.align(lv.ALIGN.CENTER, 0, 20)
+        #self.tile1_subtitle.set_style_text_color(lv.color_hex(0x000000), 0)
+        self.apply_tile_colors(self.tile1, self.tile1_subtitle, False)
+
+        self.tile1_slide = lv.label(self.tile1)
+        self.tile1_slide.set_text("Next Slide -->")
+        self.tile1_slide.set_style_text_font(lv.font_montserrat_16, 0)
+        self.tile1_slide.align(lv.ALIGN.BOTTOM_RIGHT, -10, -10)
+        self.apply_tile_colors(self.tile1, self.tile1_slide, False)
+        
         self.tile2_label = lv.label(self.tile2)
-        self.tile2_label.set_text("Welcome to the workshop")
+        self.tile2_label.set_text("Settings: ")
         self.tile2_label.set_style_text_font(lv.font_montserrat_28, 0)
-        self.tile2_label.center()
         self.apply_tile_colors(self.tile2, self.tile2_label, False)
         self.tile2.add_flag(lv.obj.FLAG.CLICKABLE)
         self.tile2.add_event_cb(
             self.on_tile2_clicked, lv.EVENT.CLICKED, None
         )
 
+        self.tile2_schedules = lv.label(self.tile2)
+        self.tile2_schedules.set_text("Campus Grasvik -- Karlskrona Central\n\nKarlskrona Cental -- Campus Grasvik")
+        self.tile2_schedules.set_style_text_font(lv.font_montserrat_20, 0)
+        self.tile2_schedules.center()
+        self.apply_tile_colors(self.tile2, self.tile2_schedules, False)
+        self.tile2.add_flag(lv.obj.FLAG.CLICKABLE)
+        self.tile2.add_event_cb(
+            self.on_tile2_clicked, lv.EVENT.CLICKED, None
+                )
     @staticmethod
     def connect_wifi():
         'Function: Connects to WiFi'
